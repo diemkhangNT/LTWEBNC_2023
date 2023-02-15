@@ -1,0 +1,14 @@
+.title_ex1{
+    text-align: center;
+}
+.style_ex3{
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url("HOAVAN.jpg");
+}
+.inside{
+    background-color: rgb(255, 253, 249);
+    opacity: 0.8;
+}
