@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "ThongTin";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="row">
+    <h2 class="text-center">THÔNG TIN ĐĂNG KÝ</h2>
+    <div class="col-lg-2 col-md-1 col-sm-12"></div>
+    <div class="col-lg-8 col-md-10 col-sm-12 container mt-3">
+        <form action="#" method="post" name="frmDK">
+            <div class="mb-3 mt-3">
+                <label for="hoten">Tên: </label>
+                <input class="form-control" type="text" id="hoten" name="hoten" placeholder="Nhập họ tên ..." />
+            </div>
+            <div class="mb-3">
+                <label for="matkhau">Mật khẩu: </label>
+                <input class="form-control" type="password" id="matkhau" name="matkhau" />
+            </div>
+            <div class="mb-3">
+                <label for="diachi">Địa chỉ: </label>
+                <textarea class="form-control " rows="5" id="diachi" name="diachi"></textarea>
+            </div>
+            <div class="form-check mb-3">
+                <label class="form-check-label" for="dabanh">
+                    <input class="form-check-input" type="checkbox" id="dabanh" name="dabanh" value="Đá banh" />
+                    Ghi nhớ
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+    </div>
+    <div class="col-lg-2 col-md-1 col-sm-12"></div>
+</div>
+
