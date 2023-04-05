@@ -8,7 +8,22 @@
 </head>
 <body>
     <div id="div-top">
+        @{
+            var user = (DemoWeb.Models.Customer)HttpContext.Current.Session["TaiKhoan"];
+
+        }
         Menu
+        @{
+            if (user != null)
+            {
+                <p class="text-center text-bg-success">Đăng nhập thành công! Welcome to @user.NameCus</p>
+            }
+            else
+            {
+                <p class="text-center text-bg-danger">@TempData["logout"] Bạn chưa đăng nhập!</p>
+            }
+        }
+
     </div>
     <div id="div-main">
         <div id="div-left">
@@ -27,11 +42,27 @@
                     Phụ kiện
                 </li>
                 <li>
-                    <a href="~/Home/DangKy">Đăng ký</a>
-                </li>
-                <li>
                     <a href="~/Categories/Index">Category</a>
                 </li>
+                <li>
+                    <a href="~/Users/Register">Đăng ký</a>
+                </li>
+                @{
+                    if (user != null)
+                    {
+                        <li>
+                            <a href="~/Users/Logout">Đăng xuất</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="~/Users/Login">Đăng nhập</a>
+                        </li>
+                    }
+                }
+
+
             </ul>
         </div>
         <div id="div-right">

@@ -99,11 +99,26 @@ namespace DemoWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product, HttpPostedFileBase ImagePro)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                var productDB = db.Products.FirstOrDefault(p => p.ProductID == product.ProductID);
+                if(productDB != null)
+                {
+                    productDB.NamePro = product.NamePro;
+                    productDB.DecriptionPro = product.DecriptionPro;
+                    productDB.Price = product.Price;
+                    if (ImagePro != null)
+                    {
+                        var fileName = Path.GetFileName(ImagePro.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                        productDB.ImagePro = fileName;
+                        ImagePro.SaveAs(path);
+                    }
+                    productDB.Category = product.Category;
+                }
+                //db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
