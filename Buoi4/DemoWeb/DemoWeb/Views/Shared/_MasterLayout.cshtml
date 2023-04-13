@@ -8,27 +8,41 @@
 </head>
 <body>
     <div id="div-top">
+        <!-- Grey with black text -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Categories">PRODUCT STORE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Products">ADMIN PRODUCT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/CustomerProducts">
+                        CUSTOMER
+                        PRODUCT
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT</a>
+                </li>
+            </ul>
+            <div class="ms-auto">
+                @Html.Action("CartPartial", "Cart")
+            </div>
+        </nav>
         @{
             var user = (DemoWeb.Models.Customer)HttpContext.Current.Session["TaiKhoan"];
 
-        }
-        Menu
-        @{
-            if (user != null)
-            {
-                <p class="text-center text-bg-success">Đăng nhập thành công! Welcome to @user.NameCus</p>
-            }
-            else
-            {
-                <p class="text-center text-bg-danger">@TempData["logout"] Bạn chưa đăng nhập!</p>
-            }
         }
 
     </div>
     <div id="div-main">
         <div id="div-left">
+            
             <h3>Danh mục sản phẩm</h3>
             <ul style="list-style: none">
+                <h5 class="fw-bold text-muted"><i>Home</i></h5>
                 <li>
                     <a href="/Home/TrangChu">Trang chủ</a>
                 </li>
@@ -44,6 +58,18 @@
                 <li>
                     <a href="~/Categories/Index">Category</a>
                 </li>
+                <hr />
+                <h5 class="fw-bold text-muted"><i>Products</i></h5>
+                <li>
+                    <a href="~/Products/Index">Trang chủ</a>
+                </li>
+                <hr />
+                <h5 class="fw-bold text-muted"><i>Customer products</i></h5>
+                <li>
+                    <a href="~/CustomerProducts/Index">Trang chủ</a>
+                </li>
+                <hr />
+                <h5 class="fw-bold text-muted"><i>Users</i></h5>
                 <li>
                     <a href="~/Users/Register">Đăng ký</a>
                 </li>
@@ -64,13 +90,26 @@
 
 
             </ul>
+
         </div>
         <div id="div-right">
             @RenderBody()
         </div>
     </div>
     <div id="div-footer">
-        Footer
+        <div class="row">
+            
+            @{
+                if (user != null)
+                {
+                    <p class="text-center text-bg-success">Đăng nhập thành công! Welcome to @user.NameCus</p>
+                }
+                else
+                {
+                    <p class="text-center text-bg-danger">@TempData["logout"] Bạn chưa đăng nhập!</p>
+                }
+            }
+        </div>
     </div>
 </body>
 </html>

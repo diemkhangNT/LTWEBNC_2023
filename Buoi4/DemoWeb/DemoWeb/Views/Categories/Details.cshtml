@@ -1,8 +1,9 @@
 ﻿@model DemoWeb.Models.Category
-
+@using DemoWeb.Models
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    DBSportStoreEntities db = new DBSportStoreEntities();
 }
 
 <div style="margin: 10px auto; width: 70%">
@@ -28,8 +29,33 @@
             </dd>
         </dl>
     </div>
+    
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
         @Html.ActionLink("Trở lại", "Index", new { id = UrlParameter.Optional }, new { @class = "btn btn-warning" })
     </p>
+    <div>
+        <h5>Gồm những sản phẩm</h5>
+        <div class="row">
+            @{ 
+                var sp = db.Products.Where(s => s.Category == Model.IDCate).ToList();
+            }
+            @foreach (var sanpham in sp)
+            {
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="~/Images/@sanpham.ImagePro">
+                        <div class="card-body" style="text-align: center">
+                            <h4 class="card-title">@sanpham.NamePro</h4>
+                            <p class="card-text">@sanpham.Price</p>
+                            @Html.ActionLink("CHI TIẾT", "Details", "Products", new
+                            {
+                                id = sanpham.ProductID
+                            }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
