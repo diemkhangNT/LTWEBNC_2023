@@ -34,6 +34,17 @@ namespace DemoWeb.Controllers
             return View(product);
         }
 
+        public ActionResult GetProductsByCategory()
+        {
+            var categories = db.Categories.ToList();
+            return PartialView("CategoriesPartialView", categories);
+        }
+
+        public ActionResult GetProductsByCateId(int id)
+        {
+            var products = db.Products.Where(p => p.Category1.Id == id).ToList();
+            return View("Index", products);
+        }
     }
 
 }

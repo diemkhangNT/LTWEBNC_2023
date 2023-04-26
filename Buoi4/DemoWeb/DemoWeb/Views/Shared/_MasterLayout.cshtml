@@ -39,22 +39,11 @@
     </div>
     <div id="div-main">
         <div id="div-left">
-            
+
             <h3>Danh mục sản phẩm</h3>
             <ul style="list-style: none">
-                <h5 class="fw-bold text-muted"><i>Home</i></h5>
-                <li>
-                    <a href="/Home/TrangChu">Trang chủ</a>
-                </li>
-                <li>
-                    <a href="/Home/DesktopComputer">Máy tính để bàn</a>
-                </li>
-                <li>
-                    Điện thoại
-                </li>
-                <li>
-                    Phụ kiện
-                </li>
+
+                @Html.Action("GetProductsByCategory", "CustomerProducts")
                 <li>
                     <a href="~/Categories/Index">Category</a>
                 </li>
@@ -90,7 +79,6 @@
 
 
             </ul>
-
         </div>
         <div id="div-right">
             @RenderBody()

@@ -287,6 +287,8 @@
     <Content Include="Views\CustomerProducts\Details.cshtml" />
     <Content Include="Views\Cart\GetCartInfo.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Shared\CategoriesPartialView.cshtml" />
+    <Content Include="Views\Cart\ConfirmCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
